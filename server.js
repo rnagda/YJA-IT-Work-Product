@@ -34,6 +34,10 @@ app.get('/edit', function (req, res) {
   res.render('fetch');
 });
 
+app.get('/done', function (req, res) {
+  res.render('done');
+});
+
 app.post('/', function(req, res) {
   var dateFormat = require('dateformat');
   var d = new Date(req.body.birthday_year, req.body.birthday_month - 1, req.body.birthday);
@@ -44,7 +48,7 @@ app.post('/', function(req, res) {
     if(err) {
       res.redirect('/');
     } else {
-      res.redirect('/');
+      res.redirect('/done');
     }
   });
 });
@@ -70,7 +74,7 @@ app.post('/edit', function(req, res) {
           console.log(err);
           res.redirect('/');
         } else {
-          res.redirect('/');
+          res.redirect('/done');
         }
       });
     });
