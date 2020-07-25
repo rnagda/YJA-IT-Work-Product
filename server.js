@@ -42,9 +42,9 @@ app.post('/', function(req, res) {
   Response.addResponse(req.body.first_name, req.body.middle_name, req.body.last_name, date, req.body.phone_number, req.body.email, address, 
     req.body.city, req.body.state, req.body.zip_code, req.body.jain_center, req.body.dietary_preferences, req.body.special_needs, function (err) {
     if(err) {
-      
+      res.redirect('/');
     } else {
-      res.redirect('https://yja.org/');
+      res.redirect('/');
     }
   });
 });
@@ -53,7 +53,7 @@ app.post('/edit', function(req, res) {
   if (req.body.old_email == null) {
     Response.fetchResponse(req.body.email, function (user) {
       if(user == null) {
-        
+        res.redirect('/');
       } else {
         res.render('edit', {user: user});
       }  
@@ -68,8 +68,9 @@ app.post('/edit', function(req, res) {
         req.body.city, req.body.state, req.body.zip_code, req.body.jain_center, req.body.dietary_preferences, req.body.special_needs, function (err) {
         if(err) {
           console.log(err);
+          res.redirect('/');
         } else {
-          res.redirect('https://yja.org/');
+          res.redirect('/');
         }
       });
     });
