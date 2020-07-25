@@ -41,7 +41,7 @@ app.get('/done', function (req, res) {
 app.post('/', function(req, res) {
   var dateFormat = require('dateformat');
   var d = new Date(req.body.birthday_year, req.body.birthday_month - 1, req.body.birthday);
-  var date = dateFormat(d, "mmmm dS, yyyy");
+  var date = dateFormat(d, "mmmm dd, yyyy");
   var address = req.body.address + " " + req.body.address_two;
   Response.addResponse(req.body.first_name, req.body.middle_name, req.body.last_name, date, req.body.phone_number, req.body.email, address, 
     req.body.city, req.body.state, req.body.zip_code, req.body.jain_center, req.body.dietary_preferences, req.body.special_needs, function (err) {
@@ -66,7 +66,7 @@ app.post('/edit', function(req, res) {
     Response.deleteResponse(req.body.old_email, function (user) {
       var dateFormat = require('dateformat');
       var d = new Date(req.body.birthday_year, req.body.birthday_month - 1, req.body.birthday);
-      var date = dateFormat(d, "mmmm dS, yyyy");
+      var date = dateFormat(d, "mmmm dd, yyyy");
       var address = req.body.address + " " + req.body.address_two;
       Response.addResponse(req.body.first_name, req.body.middle_name, req.body.last_name, date, req.body.phone_number, req.body.email, address, 
         req.body.city, req.body.state, req.body.zip_code, req.body.jain_center, req.body.dietary_preferences, req.body.special_needs, function (err) {
